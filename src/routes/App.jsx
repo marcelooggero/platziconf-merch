@@ -6,27 +6,40 @@ import Information from '../containers/Information'
 import NotFound from '../containers/NotFound'
 import Payment from '../containers/Payment'
 import Success from '../containers/Success'
+import AddProduct from '../containers/AddProduct'
+import AddCategory from '../containers/AddCategory'
+import Login from '../containers/Login'
+
 import Layout from '../components/Layout'
 import AppContext from '../context/AppContext'
 import useInitialState from '../hooks/useInitialState'
 
 const App = () => {
   const initialState = useInitialState();
+  const isEmpty = Object.keys(initialState.state).length;
   return (
-    <AppContext.Provider value={initialState}>
-      <BrowserRouter>
-        <Layout>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/checkout" component={Checkout} />
-            <Route exact path="/checkout/information" component={Information} />
-            <Route exact path="/checkout/payment" component={Payment} />
-            <Route exact path="/checkout/success" component={Success} />
-            <Route component={NotFound} />
-          </Switch>
-        </Layout>
-      </BrowserRouter>
-    </AppContext.Provider>
+    <>
+      {isEmpty > 0 ? (
+        <AppContext.Provider value={initialState}>
+          <BrowserRouter>
+            <Layout>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/checkout" component={Checkout} />
+                <Route exact path="/checkout/information" component={Information} />
+                <Route exact path="/checkout/payment" component={Payment} />
+                <Route exact path="/checkout/success" component={Success} />
+                <Route exact path="/agregar-producto" component={AddProduct} />
+                <Route exact path="/agregar-categoria" component={AddCategory} />
+                <Route exact path="/login" component={Login} />
+                <Route component={NotFound} />
+              </Switch>
+            </Layout>
+          </BrowserRouter>
+        </AppContext.Provider>
+    ) : <h1>Cargando...</h1> }
+      
+    </>
   );
 };
 export default App

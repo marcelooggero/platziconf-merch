@@ -1,8 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import initialState from '../initialState'
+
+const API = 'https://almacendeproductos.herokuapp.com/api/v1/products';
 
 const useInitialState = () => {
     const [state, setState] = useState(initialState);
+    const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState([]);
+
+    useEffect (async ()=> {
+        const response = await axios(API);
+        setProducts(response.data.data.data);
+    },[])
+
+    useEffect (async ()=> {
+        const response = await axios('https://almacendeproductos.herokuapp.com/api/v1/category');
+        setCategories(response.data.data.data);
+    },[])
 
     const addToCart = payload => {
         setState({
@@ -37,6 +52,8 @@ const useInitialState = () => {
         removeFromCart,
         addToBuyer,
         addNewOrder,
+        products,
+        categories,
         state,
     };
 };

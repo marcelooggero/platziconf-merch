@@ -4,8 +4,8 @@ import '../styles/components/Footer.css'
 const Footer = () => {
   return (
     <div className="Footer">
-      <p className="Footer-title">PlatziConf Merch</p>
-      <p className="Footer-copy">Todos los izquierdos reservados</p>
+      <p className="Footer-title">Almacen de Productos</p>
+      <p className="Footer-copy">2021 - Todos los derechos reservados</p>
     </div>
   )
 }

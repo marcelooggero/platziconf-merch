@@ -4,18 +4,17 @@ import AppContext from '../context/AppContext'
 import '../styles/components/Products.css'
 
 const Products = () => {
-    const {state, addToCart} = useContext(AppContext);
-    const { products} = state;
+    const {products, addToCart} = useContext(AppContext);
 
 const handleAddToCart = product => () => {
     addToCart(product);
 }
-
+  // console.log(products)
     return (
       <div className="Products">
         <div className="Products-items">
           {products.map(product => (
-            <Product key={product.id} product={product} handleAddToCart={handleAddToCart} />
+            <Product key={product._id} product={product} handleAddToCart={handleAddToCart} />
                 ))}
         </div>
       </div>
