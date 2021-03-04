@@ -58,7 +58,6 @@ const AddProduct = () => {
         document.getElementById("description").value=''
         document.getElementById("price").value=''
         document.getElementById("category").selectedIndex="0"
-        
         document.getElementById("quantity").value=''
         document.getElementById("imageCover").value=''
        
